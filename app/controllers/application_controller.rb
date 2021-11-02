@@ -15,4 +15,5 @@ class ApplicationController < ActionController::API
     def current_user
         User.find_by_id(decode_token)
     end
+    # call call in response to any fetch request that has Authorization header
 end

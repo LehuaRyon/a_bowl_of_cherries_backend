@@ -13,6 +13,6 @@ class Api::V1::SessionsController < ApplicationController
 
   def autologin
     # byebug
-    
+    render json: {user: UserSerializer.new(current_user), token: token}
   end
 end
