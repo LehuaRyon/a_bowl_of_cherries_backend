@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update, :destroy]
+    # before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users/1
 #   def show
@@ -8,7 +8,8 @@ class Api::V1::UsersController < ApplicationController
 
   # POST /months
   def create
-    @user = User.new(user_params)
+    # byebug
+    user = User.create(user_params)
     render json: {user: UserSerializer.new(user), token: "token will go here"}
 
     # if @user.save
@@ -40,7 +41,7 @@ class Api::V1::UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     # def set_user
-    #   @@user = User.find(params[:id])
+    #   @user = User.find(params[:id])
     # end
 
     # Only allow a list of trusted parameters through.
