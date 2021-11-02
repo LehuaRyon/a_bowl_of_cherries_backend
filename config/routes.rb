@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  # get 'sessions/login'
+  # get 'sessions/autologin'
   # resources :users
   root 'pages#index'
   namespace :api do
     namespace :v1 do
+      post '/login', to: "sessions#login"
+      post '/autologin', to: "sessions#login"
       resources :users
       resources :months
       resources :events #, only: [:index, :create, :destroy]
