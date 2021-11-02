@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_030043) do
+ActiveRecord::Schema.define(version: 2021_11_02_213107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 2021_11_02_030043) do
     t.bigint "month_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["month_id"], name: "index_events_on_month_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "months", force: :cascade do |t|
@@ -40,4 +42,5 @@ ActiveRecord::Schema.define(version: 2021_11_02_030043) do
   end
 
   add_foreign_key "events", "months"
+  add_foreign_key "events", "users"
 end
