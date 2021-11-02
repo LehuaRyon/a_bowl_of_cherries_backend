@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
+  # resources :users
   root 'pages#index'
   namespace :api do
     namespace :v1 do
+      resources :users
       resources :months
       resources :events #, only: [:index, :create, :destroy]
     end
