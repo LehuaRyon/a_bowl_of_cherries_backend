@@ -10,13 +10,8 @@ class Api::V1::UsersController < ApplicationController
   def create
     # byebug
     user = User.create(user_params)
-    render json: {user: UserSerializer.new(user), token: "token will go here"}
-
-    # if @user.save
-    #   render json: @user, status: :created, location: @user
-    # else
-    #   render json: @user.errors, status: :unprocessable_entity
-    # end
+    token = encode_token(user.id)
+    render json: {user: UserSerializer.new(user), token: token}
   end
 
   # PATCH/PUT /users/1
