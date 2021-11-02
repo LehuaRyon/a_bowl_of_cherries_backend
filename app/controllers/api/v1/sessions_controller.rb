@@ -3,7 +3,8 @@ class Api::V1::SessionsController < ApplicationController
     # byebug
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
-      render json: {user: UserSerializer.new(user), token: "token will go here"}
+      token = encode_token(user.id)
+      render json: {user: UserSerializer.new(user), token: token}
     else
       render json: {error: "Incorrect username or password. Please try again."}
     end
