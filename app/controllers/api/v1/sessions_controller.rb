@@ -1,7 +1,7 @@
 class Api::V1::SessionsController < ApplicationController
   def login
     # byebug
-    user = User.find_by_username(params[:username])
+    user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       token = encode_token(user.id)
       render json: {user: UserSerializer.new(user), token: token}
@@ -13,6 +13,8 @@ class Api::V1::SessionsController < ApplicationController
 
   def autologin
     # byebug
-    render json: {user: UserSerializer.new(current_user), token: token}
+    if logged_in_user
+      render json: {user: UserSerializer.new(logged_in_user)}
+    end
   end
 end

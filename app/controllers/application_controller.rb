@@ -4,16 +4,17 @@ class ApplicationController < ActionController::API
         JWT.encode({user_id: user_id}, ENV["JWT_KEY"])
     end
 
-    def get_token
+    def user_token
         request.headers["Authorization"]
     end
 
     def decode_token
-        JWT.decode(get_token, ENV["JWT_KEY"])[0]["user_id"]
+        JWT.decode(user_token, ENV["JWT_KEY"])
     end
 
-    def current_user
-        User.find_by_id(decode_token)
+    # def current_user
+    def logged_in_user
+        User.find_by_id(decode_token[0]["user_id"])
     end
     # call call in response to any fetch request that has Authorization header
 end
