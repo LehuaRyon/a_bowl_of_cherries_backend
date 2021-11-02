@@ -12,5 +12,7 @@ class Api::V1::SessionsController < ApplicationController
   # allows me to use set_user for signup AND login
 
   def autologin
+    # byebug
+    
   end
 end
