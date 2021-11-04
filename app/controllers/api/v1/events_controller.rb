@@ -16,13 +16,15 @@ class Api::V1::EventsController < ApplicationController
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    # @event = Event.new(event_params)
 
-    if @event.save
-      render json: @event, status: :created, location: @event
-    else
-      render json: @event.errors, status: :unprocessable_entity
-    end
+    # if @event.save
+    #   render json: @event, status: :created, location: @event
+    # else
+    #   render json: @event.errors, status: :unprocessable_entity
+    # end
+    event = logged_in_user.events.create(event_params)
+    render json: event
   end
 
   # PATCH/PUT /events/1
@@ -51,7 +53,10 @@ class Api::V1::EventsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # def event_params
+    #   params.require(:event).permit(:name, :date, :location, :image_url, :description, :month_id)
+    # end
     def event_params
-      params.require(:event).permit(:name, :date, :location, :image_url, :description, :month_id)
+      params.permit(:name, :date, :location, :description, :month_id)
     end
 end
