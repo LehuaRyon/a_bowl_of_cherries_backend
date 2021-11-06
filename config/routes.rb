@@ -4,8 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: "sessions#login"
       post 'autologin', to: "sessions#autologin"
-      # post '/login', to: "sessions#login"
-      # post '/autologin', to: "sessions#login"
+      # comment out autologin when assessment comes
       resources :users
       resources :months
       resources :events #, only: [:index, :create, :destroy]
