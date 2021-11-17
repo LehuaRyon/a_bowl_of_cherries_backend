@@ -51,6 +51,6 @@ class Api::V1::MonthsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def month_params
-      params.require(:month).permit(:name, :image_url)
+      params.require(:month).permit(:name)
     end
 end
