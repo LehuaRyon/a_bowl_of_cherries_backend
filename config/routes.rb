@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   # root 'pages#index'
   namespace :api do
     namespace :v1 do
-      post 'login', to: "sessions#login"
-      post 'autologin', to: "sessions#autologin"
+      # post 'login', to: "sessions#login"
+      # post 'autologin', to: "sessions#autologin"
+      get 'autologin', to: "sessions#autologin"
       # comment out autologin when assessment comes
-      resources :users
-      resources :months
+      resources :users, only: [:create] # signup
+      resources :sessions, only: [:create] #login
+      resources :months, only: [:index, :show]
       resources :events #, only: [:index, :create, :destroy]
     end
   end

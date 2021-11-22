@@ -1,5 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   # protect_from_forgery with: :null_session
+  # before_action :set_user, only: [:create, :delete]
   before_action :set_event, only: [:show, :update, :destroy]
 
   # GET /events
@@ -37,6 +38,11 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def destroy
+    # event = Event.find(params[:id])
+    # user = User.find(event.user_id)
+    # event.destroy
+    # render json: user
+    # OR head :no_content
     if @event.destroy
       # render json: {message: "Event '#{@event.name}' successfully deleted!"}
       head :no_content
@@ -47,7 +53,10 @@ class Api::V1::EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # def set_user
+    #   @user = User.find(params[:user_id])
+    # end
+    
     def set_event
       @event = Event.find(params[:id])
     end
@@ -58,5 +67,6 @@ class Api::V1::EventsController < ApplicationController
     # end
     def event_params
       params.permit(:name, :date, :location, :description, :website, :month_id)
+      # params.permit(:name, :date, :location, :description, :website, :month_id, :user_id)
     end
 end

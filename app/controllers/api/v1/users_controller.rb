@@ -9,10 +9,16 @@ class Api::V1::UsersController < ApplicationController
   # POST /months
   def create
     # byebug
-    user = User.create(user_params)
-    token = encode_token(user.id)
-    render json: {user: user, token: token}
-    # render json: {user: UserSerializer.new(user), token: token}
+    user = User.new(user_params)
+    if user.save
+      render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
+    else
+      render json: {errors: user.errors.full_messages.to_sentence}, status: :unprocessable_entity
+    end
+
+    # user = User.create(user_params)
+    # token = encode_token(user.id)
+    # render json: {user: user, token: token}
   end
 
   # PATCH/PUT /users/1
@@ -42,7 +48,7 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-    #   params.require(:user).permit(:username, :password)
+      # params.require(:user).permit(:username, :password)
         params.permit(:username, :password)
     end
 end
