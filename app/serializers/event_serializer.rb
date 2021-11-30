@@ -4,6 +4,7 @@ class EventSerializer < ActiveModel::Serializer
   # has_one :user
 
   def username
+    # self.object.user.username
     object.user.username
   end
 

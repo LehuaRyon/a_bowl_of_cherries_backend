@@ -8,8 +8,10 @@ Rails.application.routes.draw do
       # comment out autologin when assessment comes
       resources :users, only: [:create] # signup
       resources :sessions, only: [:create] #login
-      resources :months, only: [:index, :show]
-      resources :events #, only: [:index, :create, :destroy]
+      resources :months, only: [:index, :show] do
+        resources :events, only: [:create, :destroy]
+      end
+      # resources :events #, only: [:index, :create, :destroy]
     end
   end
 
