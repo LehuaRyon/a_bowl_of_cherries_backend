@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :date, :location, :description, :website, :username, :user_id
+  attributes :id, :name, :date, :location, :description, :website, :username #, :user_id
   # has_one :month
   # has_one :user
 
@@ -8,7 +8,7 @@ class EventSerializer < ActiveModel::Serializer
     object.user.username
   end
 
-  def user_id
-    object.user.id
-  end
+  # def user_id
+  #   object.user.id
+  # end
 end
