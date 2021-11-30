@@ -27,9 +27,16 @@ class Api::V1::EventsController < ApplicationController
     #   render json: @event.errors, status: :unprocessable_entity
     # end
 
-    # event = logged_in_user.events.create!(event_params)
-    event = logged_in_user.events.create(event_params)
+    event = logged_in_user.events.create!(event_params)
+    # with ! it will throw error, active record, instead of being nil
+    # event = logged_in_user.events.create(event_params)
     render json: event
+
+    # if event.valid?
+    #   render json: event
+    # else
+    #   render json: {errors: event.errors.full_messages.to_sentence}, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /events/1
