@@ -41,11 +41,14 @@ class Api::V1::EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   # def update
-  #   if @event.update(event_params)
+  #   if @event.update!(event_params)
   #     render json: @event
   #   else
   #     render json: @event.errors, status: :unprocessable_entity
   #   end
+
+    # if @event.update!(event_params)
+    # render json: @event
   # end
 
   def destroy
