@@ -40,16 +40,19 @@ class Api::V1::EventsController < ApplicationController
   end
 
   # PATCH/PUT /events/1
-  # def update
-  #   if @event.update!(event_params)
-  #     render json: @event
-  #   else
-  #     render json: @event.errors, status: :unprocessable_entity
-  #   end
+  def update
+    event = Event.find(params[:id])
+    month = Month.find(event.month_id)
+    if event.update!(event_params)
+      render json: event
+      # render json: month
+    else
+      render json: {error: event.errors.messages}, status: :unprocessable_entity
+    end
 
-    # if @event.update!(event_params)
-    # render json: @event
-  # end
+    # event = logged_in_user.events.update(event_params)
+    # render json: event
+  end
 
   def destroy
     event = Event.find(params[:id])

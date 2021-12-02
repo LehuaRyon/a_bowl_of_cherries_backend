@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create] # signup
       resources :sessions, only: [:create] #login
       resources :months, only: [:index, :show] do
-        resources :events, only: [:create, :destroy]
+        resources :events, only: [:create, :update, :destroy]
       end
       # resources :events #, only: [:index, :create, :destroy]
     end
