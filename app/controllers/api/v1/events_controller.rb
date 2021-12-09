@@ -1,15 +1,5 @@
 class Api::V1::EventsController < ApplicationController
 
-  def index
-    @events = Event.all
-    render json: @events
-  end
-
-  def show
-    @event = Event.find(params[:id])
-    render json: @event
-  end
-
   def create
     event = logged_in_user.events.create!(event_params)
     render json: event
@@ -42,5 +32,5 @@ class Api::V1::EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :date, :location, :description, :website, :month_id)
     end
-    
+
 end

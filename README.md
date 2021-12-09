@@ -4,8 +4,8 @@ An event planning application built with a Ruby on Rails API backend and a React
 ## Description
 This app was built for the [Flatiron School](https://flatironschool.com/) React project and is meant to let a user see all the upcoming events by month, listed by date, to see which events he or she would like to attend in the future.  Any user that signs up, can log in, be automatically logged in, see what events other users have added to any month, add his or her own event, delete his or her own event, and search an event within a month by the event's name and/or description.  A user can add or delete as many events as he or she would like. A user can only delete events created by his or herself, not others. All events are listed by the date in ascending order.   
 
-#### Frontend: HTML, CSS, React, Redux, React Bootstrap
-#### Backend: Rails API -> [here](https://github.com/LehuaRyon/a_bowl_of_cherries_backend)
+#### Frontend: HTML, CSS, React, Redux, React Bootstrap -> [here](https://github.com/LehuaRyon/a_bowl_of_cherries_frontend)
+#### Backend: Rails API
 
 ## Local Installation
 To install and run the app on your local machine:
