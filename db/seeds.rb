@@ -61,14 +61,14 @@ months = Month.create([
 #     }
 # ])
 
-# users = User.create([
-#     {
-#         username: "jasmine1",
-#         password: "password"
-#     },
-#     {
-#         username: "jasmine2",
-#         password: "password"
-#     }
-# ])
+users = User.create([
+    {
+        username: "jasmine1",
+        password: "password"
+    },
+    {
+        username: "jasmine2",
+        password: "password"
+    }
+])
 
